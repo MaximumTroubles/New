@@ -1,0 +1,25 @@
+.category-list{
+    display: flex;
+    flex-direction: row;
+
+}
+.list-item{
+    list-style-type: none;
+    a{
+        color: #000;
+    }
+}
+.list-item:hover{
+    .hidden-submenu{
+        display: block;
+        border: 1px solid #000;
+        border-radius: 10px;
+        li{
+            list-style-type: none;
+        }
+    }
+}
+
+.hidden-submenu{
+    display: none;
+}
