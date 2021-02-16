@@ -1,4 +1,5 @@
 === Роли и права ===
+Привет пк 
 === Многие к многим(ManyToMany) ===
 
 https://laravel.com/docs/8.x/eloquent-relationships#many-to-many
