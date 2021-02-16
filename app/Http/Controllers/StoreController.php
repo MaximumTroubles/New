@@ -16,22 +16,22 @@ class StoreController extends Controller
         $products = Product::where('recomended', '=', 1)->paginate(3);
         // $products = Product::where('recomended', '=', 1)->simplepaginate(2);
         // dd($products);
-       
+
         return view('store.sale' ,compact('products','categories'));
     }
     public function category($slug)
     {
-        $category = Category::where('slug', '='  ,$slug)->firstOrFail(); //?  если = тогда можно не писать 
+        $category = Category::where('slug', '='  ,$slug)->firstOrFail(); //?  если = тогда можно не писать
         $products = Product::where('category_id', $category->id)->paginate(3);
         // dd($products);
-        return view('store.category', compact('category','products')); 
+        return view('store.category', compact('category','products'));
 
     }
-    public function product($slug)
+    public function product(Product $product)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
+        // $product = Product::where('slug', $slug)->firstOrFail();
         $category = Category::where('id', $product->category_id)->first();
-        $reviews = Review::where('product_id',$product->id)->paginate(4); 
+        $reviews = Review::where('product_id',$product->id)->paginate(4);
         // dd($reviews);
         return view('store.product', compact('product','category','reviews'));
     }

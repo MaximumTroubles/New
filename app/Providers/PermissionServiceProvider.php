@@ -24,6 +24,10 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::define('');
+        
+        Gate::define('manage-categories', function($user){
+
+            return $user->hasPermission('manage-categories');
+        });
     }
 }
