@@ -10008,33 +10008,29 @@ h3 {
   box-sizing: border-box;
   margin-top: 1vh;
 }
-.slider_container .slider {
+.slider_container .slider_wrap .slider {
   position: relative;
 }
-.slider_container .slider .slider_img img {
+.slider_container .slider_wrap .slider .slider_info {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+}
+.slider_container .slider_wrap .slider .slider_info .slider_img img {
   width: 100%;
 }
-.slider_container .slider .slider_name {
-  position: absolute;
-  top: 20%;
-  left: 5%;
-}
-.slider_container .slider .slider_decrp {
+.slider_container .slider_wrap .slider .slider_info .slider_decrp {
   width: 40%;
-  position: absolute;
-  top: 30%;
-  left: 5%;
+  margin-bottom: 30px;
 }
-.slider_container .slider .slider_button {
-  position: absolute;
-  top: 75%;
-  left: 5%;
+.slider_container .slider_wrap .slider .slider_info .slider_button :hover {
+  background-color: #fff;
 }
-.slider_container .slider .slider_button a {
+.slider_container .slider_wrap .slider .slider_info .slider_button a {
+  background-color: #ffed4a;
+  padding: 0.5vw 1vw;
   color: #000;
   text-decoration: none;
-  padding: 1vw;
-  background-color: #ffed4a;
   border-radius: 10px;
 }
 

@@ -1,17 +1,21 @@
 <div class="slider_container">
     @foreach ($sliders as $slider)
-        <div class="slider">
-            <div class="slider_img">
-                <img src="{{ $slider->img }}" alt="{{ $slider->name }}">
-            </div>
-            <div class="slider_name">
-                <h2>{{ $slider->name }}</h2>
-            </div>
-            <div class="slider_decrp">
-                {{ $slider->description }}
-            </div>
-            <div class="slider_button">
-                <a href="{{ $slider->button_url }}">{{ $slider->button_text }}</a>
+        <div class="slider_wrap">
+            <div class="slider">
+                <div class="slider_img">
+                    <img src="{{ $slider->img }}" alt="{{ $slider->name }}">
+                </div>
+                <div class="slider_info">
+                    <div class="slider_name">
+                        <h1>{{ $slider->name }}</h1>
+                    </div>
+                    <div class="slider_decrp">
+                        {{ $slider->description }}
+                    </div>
+                    <div class="slider_button">
+                        <a href="{{ $slider->button_url }}">{{ $slider->button_text }}</a>
+                    </div>
+                </div>
             </div>
         </div>
     @endforeach
