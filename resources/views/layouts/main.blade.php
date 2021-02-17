@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+    {{-- Slik slider --}}
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     @yield('css')
@@ -18,29 +19,25 @@
     {{-- header --}}
     <header>
       @include('layouts.menu')
-      
+
     </header>
 
     {{-- Content --}}
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-              @section('sidebar')
-                @include('store.parts._list-categories')
-              @show
-            </div>
-            <div class="col-md-9">
-              @yield('content') 
-            </div>
-        </div>
 
-         
-    </div>          
-          
-          
-              
-          
-        
+
+            <div class="content">
+              @yield('content')
+            </div>
+    </div>
+
+
+
+
+
+
+
+
 
 
     {{-- footer --}}
@@ -50,7 +47,7 @@
 
     {{-- scripts --}}
     {{-- bootstrap --}}
-    
+
     {{-- bootstrap --}}
 
     <script src="{{ asset('js/app.js') }}"></script>
@@ -58,5 +55,5 @@
 </body>
 </html>
 
-    
+
 

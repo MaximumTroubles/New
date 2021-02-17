@@ -186,6 +186,10 @@
                 <i class="fas fa-shopping-bag pr-2 text-white"></i>
                  <a href="/admin/product">Products</a>
               </li>
+               <li class="list-group-item mb-2">
+                <i class="far fa-images pr-2 text-white"></i>
+                 <a href="/admin/slider">Slider</a>
+              </li>
 
 
         </ul>
@@ -199,7 +203,7 @@
   <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">        
+      <div class="container-fluid">
         @yield('content')
       </div><!-- /.container-fluid -->
     </section>

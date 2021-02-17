@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Scopes\ProductScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use phpDocumentor\Reflection\Types\Self_;
 
 class Product extends Model
 {
@@ -43,4 +43,8 @@ class Product extends Model
         $query->orderByDesc('created_at');
     }
 
+    public function productRecommended()
+    {
+        return $this->belongsToMany(Self::class,'product_recommended','product_id','recommended_id');
+    }
 }

@@ -4,7 +4,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="container">
             <a class="navbar-brand" href="/">
-              <img src="img/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-top">Market
+              <img src="/img/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-top">Market
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">

@@ -1,19 +1,16 @@
 @extends('admin.layouts.index')
+
 @section('content')
-    <h1>Add Product</h1>
+    <h1>Edit Slider</h1>
     @include('messages.errors')
-    {!! Form::open(['url' => '/admin/product', 'files' => true ])!!}
-        @include('admin/product/_form')
+    {!! Form::model($slider ,['url' => '/admin/slider/'.$slider->id, 'files'=>true, 'method' => 'put']) !!}
+        @include('admin.slider._form')
     {!! Form::close() !!}
 
 @endsection
 @section('js')
-    {{-- CKeditor --}}
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-    {{-- Stand alone button --}}
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-
-
     <script>
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -22,6 +19,6 @@
             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
         };
         CKEDITOR.replace('description', options);
-        $('#lfm').filemanager('image')
+        $('#lfm').filemanager('image');
     </script>
 @endsection

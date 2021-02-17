@@ -6,6 +6,7 @@ use Illuminate\Http\Request; //? для чего он нужен ? В него �
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\Slider;
 use App\Models\User;
 
 class MainController extends Controller
@@ -17,13 +18,14 @@ class MainController extends Controller
         $title = 'Welcome to Home Page';
         $subtitle = '<em>to store</em>';
         $products = Product::with('category')->recomended()->latest()->paginate(9); //?название метода в Модели
+        $sliders = Slider::get();
         // $reviews = Product::with('reviews')->get();
         // dd($products[0]);
 
         // $categories = Category::all();
         // dump($products); //? команада laravel
         // dd($products[0]); //? die dump выводит данные переменных(свойст,массивов,обьектов и тд) и останавливает дальнейший код
-        return view('main.index', compact('title', 'products', 'subtitle',)); //? имя папки первое дальше могут быть еще папки или файлы но ставим . а не / меджу ними
+        return view('main.index', compact('title', 'products', 'subtitle','sliders')); //? имя папки первое дальше могут быть еще папки или файлы но ставим . а не / меджу ними
 
     }
     public function contacts()

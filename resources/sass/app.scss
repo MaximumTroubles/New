@@ -7,6 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// app components
+@import '_slider';
+
+@import '_product_page';
+
 @import 'news';
-@import 'category-menu';
-@import 'footer';
+
+@import '_footer';

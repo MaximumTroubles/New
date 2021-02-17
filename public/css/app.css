@@ -10004,6 +10004,91 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.slider_container {
+  box-sizing: border-box;
+  margin-top: 1vh;
+}
+.slider_container .slider {
+  position: relative;
+}
+.slider_container .slider .slider_img img {
+  width: 100%;
+}
+.slider_container .slider .slider_name {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+.slider_container .slider .slider_decrp {
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+}
+.slider_container .slider .slider_button {
+  position: absolute;
+  top: 75%;
+  left: 5%;
+}
+.slider_container .slider .slider_button a {
+  color: #000;
+  text-decoration: none;
+  padding: 1vw;
+  background-color: #ffed4a;
+  border-radius: 10px;
+}
+
+.product_cart_container {
+  display: flex;
+}
+
+.product_cart {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1vw;
+}
+.product_cart .prodcut_cart_item_title {
+  flex-grow: 1;
+}
+.product_cart .prodcut_cart_item_category {
+  flex-grow: 1;
+}
+.product_cart .product_cart_item_price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 3;
+  border: 1px solid #ffed4a;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.product_cart .product_cart_item_price .product_cart_item_price__sale {
+  font-size: 0.6em;
+  font-weight: 400;
+  color: #e3342f;
+}
+.product_cart .product_cart_item_price p {
+  margin: 0;
+}
+.product_cart .product_cart_item_qty_button {
+  flex-grow: 1;
+}
+
+.form-group {
+  margin: 0;
+}
+
+.qty_input {
+  display: inline;
+  width: 40%;
+}
+
+.buy_button {
+  padding: 8px 30px;
+}
+
 .news-container .article-container {
   display: flex;
   flex-direction: row;
@@ -10033,31 +10118,6 @@ h3 {
 }
 .news-container .article-container .text-container .about-article-container .created-at {
   margin-right: 30px;
-}
-
-.category-list {
-  display: flex;
-  flex-direction: row;
-}
-
-.list-item {
-  list-style-type: none;
-}
-.list-item a {
-  color: #000;
-}
-
-.list-item:hover .hidden-submenu {
-  display: block;
-  border: 1px solid #000;
-  border-radius: 10px;
-}
-.list-item:hover .hidden-submenu li {
-  list-style-type: none;
-}
-
-.hidden-submenu {
-  display: none;
 }
 
 footer nav {
