@@ -53,6 +53,7 @@
     {{-- bootstrap --}}
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://kit.fontawesome.com/d7cd3ef488.js" crossorigin="anonymous"></script>
     @yield('js')
 </body>
 </html>
