@@ -6,7 +6,7 @@
     {{ $news->links() }}
     <div class="news-container">
         @foreach ($news as $item)
-            <div class="article-container">
+            <article class="article-container">
                 <div class="img-container">
                     <img src="{{ $item->img }}" alt="{{ $item->title }}">
                 </div>
@@ -31,11 +31,11 @@
                         </p>
                     </div>
                 </div>
-            </div>
-        
+            </article>
+
         @endforeach
     </div>
 
     {{ $news->links() }}
-    
+
 @endsection

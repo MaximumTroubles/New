@@ -1,0 +1,153 @@
+@mixin disCen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin bbt {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all .4s ease;
+}
+@mixin aHover {
+    a:hover{
+        border-bottom: 1px solid $main;
+    }
+}
+header{
+    font-family: Montserrat;
+    box-sizing: border-box;
+    .upper_header {
+        font-size: 12px;
+        font-weight: 400;
+        color: $black;
+        border-bottom: 0.1px solid $mainT;
+        .container {
+            .upper_header_menu_wrap {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 0 20px;
+                ul{
+                    height: auto;
+                    padding: 0;
+                    margin: 0;
+                    li{
+                        display: inline-block;
+                        list-style: none;
+                        margin-right: 30px;
+                        a{
+                            display: block;
+                            text-decoration: none;
+                            color: $black;
+                            border-bottom: 1px solid transparent;
+                            transition: all .4s ease;
+                        }
+                        a:hover{
+                            border-bottom: 1px solid $main;
+                        }
+                        .admin_link{
+                            color: $main;
+                        }
+                    }
+                    :last-child{
+                        margin-right: 0px;
+                    }
+
+                }
+            }
+
+        }
+
+    }
+    .main_header{
+        .main_header_inner_wrap{
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 0;
+            .main_header_logo_section {
+                @include disCen();
+                width: 200px;
+                height: 40px;
+                background-color: $main;
+                margin-right: 60px;
+                border-radius: 8px;
+            }
+            .main_header_search_section {
+                display: flex;
+                margin-right: 50px;
+                .serach_input{
+                    position: relative;
+                    height: 40px;
+                    .input{
+                        min-width: 150px;
+                        width: 300px;
+                        display: inline-block;
+                        height: inherit;
+                        border-radius: 8px;
+                        border: 1px solid $main;
+                        outline: $main;
+                        ::placeholder{
+                            color: #BDBDBD;
+                        }
+
+                    }
+                    .search-btn{
+                        background-image: url('/img/Vector.svg');
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: inherit;
+                        width: 45px;
+                        background-color: $main;
+                        color: $black;
+                        border-radius: 0 8px 8px 0;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .main_header_phone_section_popup,
+            .main_header_phone_section {
+                a{
+                    @include bbt();
+                }
+                @include aHover();
+                margin-right: 30px;
+                height: 40px;
+                line-height: 20px;
+                :first-child{
+                    font-size: 18px;
+                    margin: 0;
+                    color: $black;
+                    span{
+                        font-size: 18px;
+                        color: $main;
+                    }
+                }
+                :last-child{
+                    font-size: 14px;
+                    margin: 0;
+                }
+            }
+            .main_header_phone_section{
+                :last-child{
+                    font-size: 12px;
+                    margin: 0;
+                    color: #A0A0A0;
+                }
+            }
+
+            .main_header_favorite_section {
+                height: 40px;
+            }
+            .main_header_cart_section {
+                height: 40px;
+            }
+        }
+    }
+    .nav_menu_header{
+        height: 40px;
+        background-color: $main;
+    }
+}
+

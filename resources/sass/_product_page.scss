@@ -32,6 +32,9 @@
     }
     .product_cart_item_qty_button{
         flex-grow: 1;
+        .form-group{
+            margin: 0;
+        }
     }
 }
 
@@ -43,9 +46,7 @@
 
 
 
-.form-group{
-    margin: 0;
-}
+
 
 
 .qty_input{

@@ -9,7 +9,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Slik slider --}}
-    {{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> --}}
     <link href="http://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet"/>
     <link href="http://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet"/>
     {{-- CSS --}}
@@ -20,40 +19,29 @@
 
     {{-- header --}}
     <header>
-      @include('layouts.menu')
-
+      {{-- @include('layouts.menu') --}}
+      @include('layouts._menu')
     </header>
 
     {{-- Content --}}
-    <div class="container">
-
-
+    <main>
+        <div class="container">
             <div class="content">
-              @yield('content')
+                @yield('content')
             </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
+        </div>
+    </main>
     {{-- footer --}}
     <footer>
         @include('layouts.footer')
     </footer>
 
+
     {{-- scripts --}}
-    {{-- bootstrap --}}
-
-    {{-- bootstrap --}}
-
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/d7cd3ef488.js" crossorigin="anonymous"></script>
+    {{-- myscript --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
 </body>
 </html>

@@ -3,11 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 // Variables
 @import 'variables';
-
+// @import 'reset';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // app components
+@import '_menu';
 @import '_slider';
 
 @import '_product_page';
