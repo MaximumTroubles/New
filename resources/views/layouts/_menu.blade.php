@@ -80,7 +80,7 @@
                     </a>
                 </div>
                 <div class="main_header_cart_section">
-                    <a href="/cart">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img src="/img/cart.svg" alt="">
                     </a>
                 </div>

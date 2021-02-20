@@ -44,7 +44,7 @@
             {{-- Описание товара --}}
             <hr>
             <p><b>Description:</b></p>
-            <p>{{ $product->description }}</p>
+            <p>{!! $product->description !!}</p>
         </div>
     </div>
     {{-- Recommnded section --}}
