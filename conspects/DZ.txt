@@ -1,0 +1,23 @@
+Создать таблицы:
+orders
+    id
+    totalSum
+    name
+    phone
+    address
+    status_id
+    timestamps
+
+order_items
+    id
+    order_id
+    product_name
+    product_price
+    product_qty
+    product_img
+
+status 
+    id
+    name (ожидается оплата, оплачен, оплата в процессе)
+
+Вывести в админке заказы
