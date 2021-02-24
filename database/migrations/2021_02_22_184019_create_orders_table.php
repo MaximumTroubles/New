@@ -18,8 +18,8 @@ class CreateOrdersTable extends Migration
             $table->integer('totalSum');
             $table->string('name');
             $table->string('phone');
-            $table->string('adress');
-            $table->unsignedBigInteger('status_id')->nullable();
+            $table->string('address');
+            $table->unsignedBigInteger('status_id');
             $table->timestamps();
             $table->foreign('status_id')->references('id')->on('statuses')->onDelete('set null');
 

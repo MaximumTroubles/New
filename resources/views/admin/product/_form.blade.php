@@ -51,10 +51,16 @@
     <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
-<div id="holder" style="margin-top:15px;max-height:100px;"> 
+<div id="holder" style="margin-top:15px;max-height:100px;">
     @isset($product)
         <img src="{{ $product->img }}" alt="" height="100">
     @endisset
 </div>
+
+<div class="form-group">
+    {!! Form::label('recomended_products', 'Product Recommended:', ) !!}
+    {!! Form::select('recomended_products', $allProducts, null , ['multiple' => true, 'class' => 'form-control']) !!}
+</div>
+
 
 <button class="btn btn-success">Save</button>

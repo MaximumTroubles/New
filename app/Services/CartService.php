@@ -47,4 +47,5 @@ class CartService{
         }
         Session::put('totalSum', $total);
     }
+    
 }

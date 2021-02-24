@@ -190,6 +190,10 @@
                 <i class="far fa-images pr-2 text-white"></i>
                  <a href="/admin/slider">Slider</a>
               </li>
+               <li class="list-group-item mb-2">
+                <i class="fab fa-jedi-order pr-2 text-white"></i>
+                 <a href="/admin/order">Orders</a>
+              </li>
 
 
         </ul>

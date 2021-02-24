@@ -2,9 +2,19 @@
 @section('title', 'Checkout')
 @section('content')
     <h2>Checkout</h2>
+
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        <a href="/sale">Продолжить покупки</a>
+    @else
     <div class="modal-body">
         @include('store.parts._cart')
     </div>
+
+    @include('messages.errors')
 
     {!! Form::open(['url' => '/checkout']) !!}
         <div class="form-group">
@@ -21,5 +31,7 @@
         </div>
         {!! Form::submit('checkout' , ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
+    @endif
+
 
 @endsection

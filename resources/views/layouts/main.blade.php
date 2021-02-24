@@ -11,6 +11,8 @@
     {{-- Slik slider --}}
     <link href="http://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet"/>
     <link href="http://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet"/>
+    {{-- select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     @yield('css')

@@ -64,7 +64,7 @@ class ProductController extends Controller
 
         $product->img = $request->img;
         $product->save();
-        
+
         return redirect('/admin/product')->with('success', 'Product was added!');
 
     }
@@ -90,7 +90,8 @@ class ProductController extends Controller
     {
         $categories = Category::all()->pluck('name', 'id');
         $product = Product::findOrFail($id);
-        return view('admin.product.edit', compact('product','categories'));
+        $allProducts = Product::all()->pluck('name', 'id');
+        return view('admin.product.edit', compact('product','categories','allProducts'));
     }
 
     /**
@@ -110,7 +111,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'img' => 'required',
         ]);
-            
+
         $product = Product::findOrFail($id);
         $product->name = $request->name;
         $product->slug = $request->slug;
