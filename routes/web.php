@@ -59,7 +59,8 @@ Route::post('/cart/remove/{id}' ,[CartController::class ,'remove']);
 Route::post('/cart/change-qty' ,[CartController::class ,'change']);
 
 Route::get('/checkout' ,[CheckoutController::class ,'checkout']);
-Route::post('/checkout' ,[CheckoutController::class ,'checkoutSave']);
+Route::post('/checkout-payment' ,[CheckoutController::class ,'checkoutPayment']);
+Route::post('/' ,[CheckoutController::class ,'checkoutPaymentComplete']);
 
 Auth::routes();
 
@@ -71,7 +72,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::resource('/product', ProductController::class);
     Route::resource('/slider', SliderController::class);
     Route::resource('/order', OrderController::class);
-    
+
     // Route::resource('/order/about/{id}', AboutOrderController::class);
 
 

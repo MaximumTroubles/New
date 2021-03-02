@@ -12,6 +12,8 @@
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     {{-- Stand alone button --}}
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    {{-- select2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
     <script>
@@ -23,5 +25,11 @@
         };
         CKEDITOR.replace('description', options);
         $('#lfm').filemanager('image')
+
+
+        $(document).ready(function() {
+        $('.recomended_products').select2();
+        });
+
     </script>
 @endsection

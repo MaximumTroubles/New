@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "laravelcollective/html": "^6.2",
+        "liqpay/liqpay": "^1.2",
         "unisharp/laravel-filemanager": "^2.2"
     },
     "require-dev": {

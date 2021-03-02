@@ -58,8 +58,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('recomended_products', 'Product Recommended:', ) !!}
-    {!! Form::select('recomended_products', $allProducts, null , ['multiple' => true, 'class' => 'form-control']) !!}
+    {!! Form::label('productRecommended', 'Product Recommended:', ) !!}
+    {!! Form::select('productRecommended', $allProducts, null , ['multiple' => true, 'class' => 'form-control recomended_products']) !!}
 </div>
 
 

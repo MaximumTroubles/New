@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Scopes\ProductScope;
+use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Self_;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
     // protected $fillable = ['name', 'slug', 'description', 'img'];
 
     public function getImgAttribute($value)

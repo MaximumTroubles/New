@@ -28,7 +28,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all()->pluck('name', 'id');
-        return view('admin.product.create', compact('categories'));
+        $allProducts = Product::all()->pluck('name', 'id');
+        return view('admin.product.create', compact('categories','allProducts'));
     }
 
     /**
@@ -64,6 +65,7 @@ class ProductController extends Controller
 
         $product->img = $request->img;
         $product->save();
+        $product->productRecommended()->sync($request->recomended_products);
 
         return redirect('/admin/product')->with('success', 'Product was added!');
 
@@ -127,6 +129,10 @@ class ProductController extends Controller
 
         $product->img = $request->img;
         $product->save();
+
+        $product->productRecommended()->sync($request->productRecommended);
+
+
 
 
         return redirect('/admin/product')->with('success', 'Product was Updated!');

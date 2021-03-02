@@ -297,5 +297,128 @@ Route::post('/cart/change-qty' ,[CartController::class ,'change']);
 Делаем роутинг на эту страницу гетом с контроллером и методом
 в методе сразу возвращаем путь к файлу представления
 Можно на эту страницу еще раз продублировать корзину
-Создаем форму для обработки заказа  с данными пользователя с методом пост и роутинге создает роут с постом на новый метод checkoutSave(Request $request) будет принимать данные из формы 
+Создаем форму для обработки заказа  с данными пользователя с методом пост и роутинге создает роут с постом на новый метод checkoutSave(Request $request) будет принимать данные из формы
+.
+
+
+
+=== Добавление Связи рекомендованых товаров в Админке 18.1 ===
+Сначала создаем третию таблицу , но в нащем случаии она товара так как мы сыллаемся на одну и туже таблицу Products.
+Создали миграцию:
+    public function up()
+    {
+        Schema::create('product_recommended', function (Blueprint $table) {
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('recommended_id');
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('recommended_id')->references('id')->on('products')->onDelete('cascade');
+
+        });
+    }
+Дальше прописали связи в Модели
+    public function productRecommended()
+    {
+        return $this->belongsToMany(Self::class,'product_recommended','product_id','recommended_id');
+    }
+
+Тепрь в контроллере нужно получиить  список товаров
+$allProducts = Product::all()->pluck('name', 'id'); и передать в представление
+
+Далие уже в представление нужно вывести список товаров , из который нужно выбрать те которые будет рекомендовать с этим товаром.
+Выводим мы его с помощью select и laravel collective, передаем имя метода связи в Модели  productRecommended[] - и делаем массивом  и вторым аргументом передаем переменную в которой храниться список товаров, дальше null - в нулл подставяться товары из метода productRecommended  так какlaravel collective связываеться с БД через модель
+<div class="form-group">
+    {!! Form::label('productRecommended[]', 'Product Recommended:', ) !!}
+    {!! Form::select('productRecommended[]', $allProducts, null , ['multiple' => true, 'class' => 'form-control']) !!}   - в документации написанно что нужно к имени добавитьь квадратные скобки
+</div>
+
+Но выбирать не очень удоьбно и мы будем использовать дополнение select2
+https://select2.org/
+
+Подключить СDN сss в шапку админки и js можно в низ админки можно на тех страницах где будет использоваться
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+И прописать скрипт
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();  - вставить свой класс
+});
+
+Дальше нам надо эту связь записать в третию таблицу
+https://laravel.com/docs/8.x/eloquent-relationships#syncing-associations
+
+Что бы записать в ее что то ,есть метод sync() который синхронизирует данные с таблицов
+
+$product->productRecommended()->sync($request->productRecommended); - берет обьект товаоа->вызываем метод связи из модели -> пишем синхрон( в него передаем и запроса данные которые были в select)
+
+
+=== Создание Slug 18.1 ===
+Рабоать будет на примери создания слага для Категориий
+Заходим в Модель Category  и создаем там Мутатор (сеттер)
+https://laravel.com/docs/8.x/eloquent-mutators#defining-a-mutator
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] =  $this->attributes['name'];  - создав такой мутатор мы записали что при записи новый данных в колонку слаг будет ппадать Имя новых данных, но писать мы их будет на русском с пробелами и с заглавными буквами, надо это пофикстит
+    }
+Идем сюда в доках
+https://laravel.com/docs/8.x/helpers
+Есть такой помощник как :
+https://laravel.com/docs/8.x/helpers#method-str-slug
+
+Есть метод Str::slug()
+Str::slug($this->attributes['name'],'-'); - первый параметр строка, второй разделитель не допустимых символов(пробелов)
+
+Но если мы захоти свой URL , например не понравиться как он преобразовывает
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = $value ? Str::slug($value, '-') : Str::slug($this->attributes['name'],'-');  -  Он  в первую очередь будет записывать наше значение которое попадает в value, и мы српшиваем если есть value  то запиши его но тоже с проверкой , вдруг админ укажен его с ошибкой, если решил не указывать тогда пусть генерирует из названия
+    }
+
+НООО!
+Так как этот метод может понадобиться часто для разных моделей и нужд мы его запишем как Trait
+
+Создаем Trait Sluggable.php
+
+Туда вставляем этот метод Мутатор
+И потом подключаем в тех моделях где нам нужна работа с слагом
+.
+
+
+=== Подлючение платежной системы liqPay 18.2 ===
+Заходим на сайт и регестируемся
+
+
+https://github.com/liqpay/sdk-php
+
+Установка зависимости
+composer require liqpay/liqpay
+
+в .env файле прописываем ключи
+https://www.liqpay.ua/ru/adminbusiness/i19077471154/home?sandbox=true
+LIQPAY_PUBLIC_KEY = sandbox_i46445808329
+LIQPAY_PRIVATE_KEY = sandbox_6DmhUM86ZMx8kGGppyM0GGx54uVf6MiZT9OeQfRo
+
+Дальше скачиваем в гита liqPay.php и ложим его в папку Services
+
+В контроллере CheckoutController в методе checkout вставляем взяую от сюда кусок кода
+https://www.liqpay.ua/documentation/api/aquiring/checkout/doc
+
+        $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));  - в аргументы вставляем наши клюЧи
+        $html = $liqpay->cnb_form(array(
+        'action'         => 'pay',
+        'amount'         => Session::get('totalSum'),  - сюда мы вставили сумму заказа из сессии
+        'currency'       => 'UAH',
+        'description'    => 'description text',
+        'order_id'       => 'order_id_1',
+        'version'        => '3'
+        ));
+
+Переменную $html уже можно выводить на странице - это кнопка Оплатить которая ведет к оплате на страницу liqpay
+Но!! Если мы на нее нажмем данные которые ввел пользователь нашей форме доставки например не отправяться к нам , нам сначала нужно создать прокладку тоесть сылка на следующию странице где по типу Перейти к опалате и там уже выводить кнопку
+
+
+
 .

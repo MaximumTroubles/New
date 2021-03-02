@@ -16,7 +16,7 @@
 
     @include('messages.errors')
 
-    {!! Form::open(['url' => '/checkout']) !!}
+    {!! Form::open(['url' => '/checkout-payment']) !!}
         <div class="form-group">
             {!! Form::label('name') !!}
             {!! Form::text('name',null, ['class' => 'form-control']) !!}
@@ -29,7 +29,7 @@
             {!! Form::label('address') !!}
             {!! Form::text('address',null, ['class' => 'form-control']) !!}
         </div>
-        {!! Form::submit('checkout' , ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Перейти к оплате' , ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
     @endif
 

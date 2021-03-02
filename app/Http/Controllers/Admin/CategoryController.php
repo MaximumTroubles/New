@@ -40,7 +40,6 @@ class CategoryController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|min:3|max:255',
-            'slug' =>'unique:App\Models\Category,slug|required',
         ]);
         //? Обычное сохранение
         // $category = new Category();
@@ -55,7 +54,7 @@ class CategoryController extends Controller
         // if($filename != null){
         //     $category->img = $filename->store('uploads');
         // }
-        
+
         Category::create($request->all());
         return redirect('/admin/category');
     }
@@ -79,7 +78,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        // admin/category/{$id}/edit GET 
+        // admin/category/{$id}/edit GET
         $category = Category::findOrFail($id);
         return view('admin.category.edit' , compact('category'));
     }
@@ -95,7 +94,6 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|min:3|max:255',
-            'slug' =>'unique:App\Models\Category,slug,'. $id.'|required',
         ]);
         $category = Category::findOrFail($id);
         $category->update( $request->all());
@@ -111,7 +109,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        
+
         Category::findOrFail($id)->delete();
         return redirect('/admin/category')->with('danger', 'Category '.$id.' was Deleted');
     }
